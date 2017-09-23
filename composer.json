@@ -15,7 +15,7 @@
     "target-dir": "JJs/Bundle/GeonamesBundle",
     "minimum-stability": "dev",
     "require": {
-        "php": "~5.4",
+        "php": "^>=5.6",
         "guzzle/http": "~3.5",
         "jjs/common": "*",
         "symfony/framework-bundle": "~2.1"
@@ -24,6 +24,7 @@
         "symfony/console": "~2.1",
         "symfony/dom-crawler": "~2.1",
         "symfony/css-selector": "~2.2",
-        "jms/cg": "~1.0"
+        "jms/cg": "~1.0",
+        "knplabs/doctrine-behaviors": "^1.4"
     }
 }
