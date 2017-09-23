@@ -75,7 +75,7 @@ Execute the migrations using the supplied migration configuration
 
 ```sh
 # Run in your project root directory
-app/console doctrine:migrations:migrate --configuration=vendor/jjs/geonames-bundle/JJs/GeonamesBundle/migrations.xml
+bin/console doctrine:migrations:migrate --configuration=vendor/jjs/geonames-bundle/JJs/GeonamesBundle/migrations.xml
 ```
 
 ### Application versioning
@@ -103,7 +103,7 @@ Loads a list of all countries which are refenced by the other imported data such
 as timezones and localities.
 
 ```sh
-app/console geonames:load:countries
+bin/console geonames:load:countries
 ```
 
 ### Import timezones
@@ -111,7 +111,7 @@ app/console geonames:load:countries
 Loads a list of timezones mapped to countries
 
 ```sh
-app/console geonames:load:timezones
+bin/console geonames:load:timezones
 ```
 
 ### Filter localities  
@@ -153,16 +153,16 @@ To check if the value:
 Here are some examples:  
 ```sh
 # load all localities from germany with a population >= 2000  
-app/console geonames:load:localities --filter="population:>=:2000" DE  
+bin/console geonames:load:localities --filter="population:>=:2000" DE  
   
 # load all localities with the locality-name "Kiel"  
-app/console geonames:load:localities --filter="nameUtf8:equals:Kiel"  
+bin/console geonames:load:localities --filter="nameUtf8:equals:Kiel"  
   
 # load all localities that contain "Test" in the locality-name  
-app/console geonames:load:localities --filter="nameUtf8:contains:Test"  
+bin/console geonames:load:localities --filter="nameUtf8:contains:Test"  
   
 # load all localities from germany with a population between 42000 and 100000  
-app/console geonames:load:localities --filter="population:>=:42000,population:<=:100000" DE  
+bin/console geonames:load:localities --filter="population:>=:42000,population:<=:100000" DE  
 ``` 
 
 ### Import localities
@@ -177,17 +177,17 @@ a large amount of memory.
 
 ```sh
 # All countries
-app/console geonames:load:localities
+bin/console geonames:load:localities
 
 # Subset of countries (list the desired contries as arguments)
-app/console geonames:load:localities US CA
+bin/console geonames:load:localities US CA
 
 #Using the filter function (all countries)
 
-app/console geonames:load:localities --filter="option:func:value"
+bin/console geonames:load:localities --filter="option:func:value"
 
 #Using the filter function (specific countries, as argument list)
-app/console geonames:load:localities --filter="option:func:value" US CA
+bin/console geonames:load:localities --filter="option:func:value" US CA
 
 ```
 
