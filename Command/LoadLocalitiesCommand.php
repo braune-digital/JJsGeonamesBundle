@@ -26,7 +26,7 @@ namespace JJs\Bundle\GeonamesBundle\Command;
 
 use JJs\Bundle\GeonamesBundle\Data\LocalityLoader;
 use JJs\Bundle\GeonamesBundle\Export;
-use JJs\Common\Console\OutputLogger;
+use JJs\Bundle\GeonamesBundle\Common\Console\OutputLogger;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\TableHelper;
 use Symfony\Component\Console\Input\InputArgument;

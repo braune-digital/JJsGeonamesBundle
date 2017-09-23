@@ -17,13 +17,12 @@
     "require": {
         "php": "^>=5.6",
         "guzzle/http": "~3.5",
-        "jjs/common": "*",
         "symfony/framework-bundle": "~3.0"
     },
     "require-dev": {
-        "symfony/console": "~2.1",
-        "symfony/dom-crawler": "~2.1",
-        "symfony/css-selector": "~2.2",
+        "symfony/console": "~3.0",
+        "symfony/dom-crawler": "~3.0",
+        "symfony/css-selector": "~3.0",
         "jms/cg": "~1.0",
         "knplabs/doctrine-behaviors": "^1.4"
     }
