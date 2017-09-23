@@ -6,14 +6,9 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
-use Doctrine\ORM\Mapping\ManyToMany;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
-use Doctrine\ORM\Mapping\OneToOne;
 use Doctrine\ORM\Mapping\Table;
 use JJs\Bundle\GeonamesBundle\Model\CountryInterface;
+use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
 
 /**
  * Country
@@ -27,6 +22,9 @@ use JJs\Bundle\GeonamesBundle\Model\CountryInterface;
  */
 class Country implements CountryInterface
 {
+
+	use Sluggable;
+
     /**
      * Unique identifier which represents the country in the local database.
      *
@@ -90,7 +88,7 @@ class Country implements CountryInterface
 
     /**
      * Returns the unique identifier of this country in the local database
-     * 
+     *
      * @return integer
      */
     public function getID()
@@ -100,7 +98,7 @@ class Country implements CountryInterface
 
     /**
      * Gets the unique 2 character ISO code of this country
-     * 
+     *
      * @return string
      */
     public function getCode()
@@ -110,7 +108,7 @@ class Country implements CountryInterface
 
     /**
      * Sets the unique 2 character ISO code of this country
-     * 
+     *
      * @param string $code Country code
      * @return Country
      */
@@ -123,7 +121,7 @@ class Country implements CountryInterface
 
     /**
      * Gets the name by which this country is internationally recognised
-     * 
+     *
      * @return string
      */
     public function getName()
@@ -133,7 +131,7 @@ class Country implements CountryInterface
 
     /**
      * Sets the name by which this country is internationally recognised
-     * 
+     *
      * @param string $name Country name
      * @return Country
      */
@@ -146,7 +144,7 @@ class Country implements CountryInterface
 
     /**
      * Gets the top level domain suffix of the country
-     * 
+     *
      * @return string
      */
     public function getDomain()
@@ -156,7 +154,7 @@ class Country implements CountryInterface
 
     /**
      * Sets the top level domain suffix of the country
-     * 
+     *
      * @param string $domain Domain
      */
     public function setDomain($domain)
@@ -169,7 +167,7 @@ class Country implements CountryInterface
     /**
      * Gets the format which postal codes from the country are expected to
      * adhere to
-     * 
+     *
      * @return string
      */
     public function getPostalCodeFormat()
@@ -180,7 +178,7 @@ class Country implements CountryInterface
     /**
      * Sets the format which postal codes from the country are expected to
      * adhere to
-     * 
+     *
      * @param string $postalCodeFormat
      * @return Country
      */
@@ -194,7 +192,7 @@ class Country implements CountryInterface
     /**
      * Gets the regular expression which postal codes from the country are
      * expected to match
-     * 
+     *
      * @return string
      */
     public function getPostalCodeRegex()
@@ -205,7 +203,7 @@ class Country implements CountryInterface
     /**
      * Sets the regular expression which postal codes from the country are
      * expected to match
-     * 
+     *
      * @param string $postalCodeRegex
      * @return Country
      */
@@ -218,7 +216,7 @@ class Country implements CountryInterface
 
     /**
      * Gets the prefix which is prepened to phone nubmers inside this country
-     * 
+     *
      * @return string
      */
     public function getPhonePrefix()
@@ -228,7 +226,7 @@ class Country implements CountryInterface
 
     /**
      * Sets the prefix which is prepened to phone nubmers inside this country
-     * 
+     *
      * @param string $phonePrefix
      * @return Country
      */
@@ -239,7 +237,18 @@ class Country implements CountryInterface
         return $this;
     }
 
+	/**
+	 * @return string
+	 */
     public function __toString() {
         return $this->getName();
     }
+
+	/**
+	 * @return array
+	 */
+	public function getSluggableFields()
+	{
+		return ['name'];
+	}
 }

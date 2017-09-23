@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\MappedSuperclass;
-use Doctrine\ORM\Mapping\Table;
+use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
 
 /**
  * Geographical Locality
@@ -21,6 +21,9 @@ use Doctrine\ORM\Mapping\Table;
  */
 abstract class Locality
 {
+
+	use Sluggable;
+
     /**
      * Locality Identifier
      *
@@ -36,7 +39,7 @@ abstract class Locality
      *
      * Uniquely identifies this locality for syncronization from data on
      * GeoNames.org.
-     * 
+     *
      * @Column(name="geoname_id", type="integer", nullable=true)
      * @var integer
      */
@@ -125,7 +128,7 @@ abstract class Locality
 
     /**
      * Returns the locality ID
-     * 
+     *
      * @return integer
      */
     public function getID()
@@ -145,7 +148,7 @@ abstract class Locality
 
     /**
      * Sets the GeoNames.org identifier of this locality
-     * 
+     *
      * @param integer $geonameIdentifier Identifier
      *
      * @return Locality
@@ -159,7 +162,7 @@ abstract class Locality
 
     /**
      * Returns the country
-     * 
+     *
      * @return Country
      */
     public function getCountry()
@@ -169,9 +172,9 @@ abstract class Locality
 
     /**
      * Sets the country
-     * 
+     *
      * @param Country $country Country
-     * 
+     *
      * @return Locality
      */
     public function setCountry(Country $country)
@@ -183,7 +186,7 @@ abstract class Locality
 
     /**
      * Returns the name of the locality
-     * 
+     *
      * @return string
      */
     public function getName()
@@ -193,7 +196,7 @@ abstract class Locality
 
     /**
      * Returns the UTF8 encoded name of the locality
-     * 
+     *
      * @return string
      */
     public function getNameUtf8()
@@ -203,7 +206,7 @@ abstract class Locality
 
     /**
      * Sets the UTF8 encoded name of the locality
-     * 
+     *
      * @param string $name Locality name
      *
      * @return Locality
@@ -217,7 +220,7 @@ abstract class Locality
 
     /**
      * Returns the ASCII encoded name of the locality
-     * 
+     *
      * @return string
      */
     public function getNameAscii()
@@ -227,7 +230,7 @@ abstract class Locality
 
     /**
      * Sets the ASCII encoded name of the locality
-     * 
+     *
      * @param string $name Name
      *
      * @return Locality
@@ -241,7 +244,7 @@ abstract class Locality
 
     /**
      * Returns the approximate latitude of the locality
-     * 
+     *
      * @return float
      */
     public function getLatitude()
@@ -251,7 +254,7 @@ abstract class Locality
 
     /**
      * Sets the latitude of the locality
-     * 
+     *
      * @param string $latitude Latitude
      *
      * @return float
@@ -265,7 +268,7 @@ abstract class Locality
 
     /**
      * Returns the longitude of the locality
-     * 
+     *
      * @return float
      */
     public function getLongitude()
@@ -275,7 +278,7 @@ abstract class Locality
 
     /**
      * Sets the longitude of the locality
-     * 
+     *
      * @param float $longitude Longitude
      *
      * @return Locality
@@ -289,7 +292,7 @@ abstract class Locality
 
     /**
      * Returns the timezone
-     * 
+     *
      * @return Timezone
      */
     public function getTimezone()
@@ -299,7 +302,7 @@ abstract class Locality
 
     /**
      * Sets the timezone
-     * 
+     *
      * @param Timezone $timezone Timezone
      *
      * @return Locality
@@ -313,7 +316,7 @@ abstract class Locality
 
     /**
      * Returns the creation date of this locality
-     * 
+     *
      * @return DateTime
      */
     public function getCreationDate()
@@ -323,7 +326,7 @@ abstract class Locality
 
     /**
      * Returns the modification date of this locality
-     * 
+     *
      * @return DateTime
      */
     public function getModificationDate()
@@ -333,9 +336,9 @@ abstract class Locality
 
     /**
      * Sets the modification date of this locality
-     * 
+     *
      * @param DateTime $modificationDate Modification date
-     * 
+     *
      * @return Locality
      */
     public function setModificationDate(DateTime $modificationDate)
@@ -356,4 +359,12 @@ abstract class Locality
 
         return $this;
     }
+
+	/**
+	 * @return array
+	 */
+	public function getSluggableFields()
+	{
+		return ['nameAscii'];
+	}
 }

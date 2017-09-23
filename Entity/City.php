@@ -2,15 +2,9 @@
 
 namespace JJs\Bundle\GeonamesBundle\Entity;
 
-use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\GeneratedValue;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\Index;
-use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -29,6 +23,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class City extends Locality
 {
+
     /**
      * State
      *
@@ -36,12 +31,6 @@ class City extends Locality
      * @var State
      */
     protected $state;
-
-    /**
-     * @Gedmo\Slug(fields={"nameAscii"})
-     * @ORM\Column(length=128, unique=true)
-     */
-    private $slug;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -55,7 +44,7 @@ class City extends Locality
 
     /**
      * Returns the state
-     * 
+     *
      * @return State
      */
     public function getState()
@@ -65,7 +54,7 @@ class City extends Locality
 
     /**
      * Sets the state
-     * 
+     *
      * @param State $state State
      */
     public function setState(State $state)
@@ -81,22 +70,6 @@ class City extends Locality
 
     public function getGeopoint() {
         return $this->getLatitude() . ',' . $this->getLongitude();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param mixed $slug
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
     }
 
     /**
